@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+		<title>Alta de cliente</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="head">
+				
+			</div><!-- Header ends -->
+			<div id="body">
+				<input type="hidden" id="idClient" />
+				Nombre(s): <input type="text" id="firstName"/><br />
+				Apellido Paterno: <input type="text" id="lastName"/><br />
+				Apellido Materno: <input type="text" id="lastMaternal"/><br />
+				Correo Electrónico: <input type="email" id="email" /><br />
+				Codigo Postal: <input type="number" id="postCode"/><br />
+				Contraseña: <input type="password" id="password"/><br />
+				Confirmar contraseña: <input type="password" id="repeatPassword" /><br />
+				<button onclick="insertRecord()" >Crear cuenta</button><br />
+				<button onclick="resetForm()" >Borrar</button><br />
+				<div id="results">
+					
+				</div>
+			</div><!-- Body ends -->
+			<div id="footer">
+				
+			</div><!-- Footer ends -->
+		</div>
+	</body>
+	<script>
+		var results = document.getElementById('results');
+		var idClient = document.getElementById('idClient');
+		var firstName = document.getElementById('firstName');
+		var lastName = document.getElementById('lastName');
+		var lastMaternal = document.getElementById('lastMaternal');
+		var email = document.getElementById('email');
+		var postCode = document.getElementById('postCode');
+		var password = document.getElementById('password');
+		var repeatPassword = document.getElementById('repeatPassword');
+		
+		var createStatement = "CREATE TABLE IF NOT EXISTS Client (idClient INTEGER PRIMARY KEY AUTOINCREMENT, firstName text, lastName text, lastMaternal text, email text, postCode integer, password text)";
+		var selectAllStatement = "SELECT * FROM Client";
+		var insertStatement = "INSERT INTO Client (firstName, lastName, lastMaternal, email, postCode, password) VALUES (?,?,?,?,?,?)";
+		
+		var db = openDatabase("ComercialMexicana", "1.0", "Comercial Mexicana", 200000);
+		
+		var dataset;
+		createTable();
+		
+			function onError(tx, error){
+				alert(error.message);
+			}
+			
+			function showRecords(){
+				results.innerHTML = '';
+				db.transaction(function(tx){
+					tx.executeSql(selectAllStatement, [], function(tx, result) {
+						dataset = result.rows;
+						for (var i = 0, item = null; i < dataset.length; i++) {
+							item = dataset.item(i);
+							results.innerHTML +=
+								'<li>' + item['lastName'] + ', ' + item['firstName'] + ', ' + item['password'] + '</li>';
+						}
+					});
+				});
+			}
+			
+			function createTable(){
+				 db.transaction(function(tx) {
+				 	tx.executeSql(createStatement, [], showRecords, onError);
+				 });
+			}
+			
+			function insertRecord() {
+				db.transaction(function(tx) {
+					tx.executeSql(insertStatement, [firstName.value, lastName.value, lastMaternal.value, email.value, postCode.value, password.value], loadAndReset, onError);
+				});
+			}
+			
+			function loadRecord(i){
+				var item = dataset.item(i);
+				firstName.value = item['firstName'];
+				lastName.value = item['lastName'];
+				lastMaternal.value = item['lastMaternal'];
+				email.value = item['email'];
+				postCode.value = item['postCode'];
+				password.value = item['password'];
+				idClient.value = item['idClient'];
+			}
+			
+			function loadAndReset(){
+				resetForm();
+				showRecords();
+			}
+			
+			function resetForm(){
+				firstName.value = '';
+				lastName.value = '';
+				lastMaternal.value = '';
+				email.value = '';
+				postCode.value = '';
+				password.value = '';
+				idClient.value = '';
+				repeatPassword.value = '';
+			}
+	</script>
+</html>
