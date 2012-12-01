@@ -191,6 +191,7 @@
     left: 16%;
     float: left;
     opacity: 0.0;
+    background-image: url('../img/config-01.png');
 }
 
 .timeClass{
@@ -232,4 +233,9 @@
 	position: absolute;
     top: 13px;
     float: left;
+}
+
+.iconCmd{
+	width: 100%;
+	height: 8.6em;
 }
