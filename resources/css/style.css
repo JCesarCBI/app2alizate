@@ -224,4 +224,12 @@
 .clockImg{
 	width: 15%;
 	height: auto;
+	position: relative;
+	float: left;
+}
+
+.header{
+	position: absolute;
+    top: 13px;
+    float: left;
 }
