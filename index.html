@@ -37,21 +37,21 @@
 			    new CSSStyleSubject(
 			        "cmdB",
 			        "border: 2px solid #808080; width: 15%;	height: auto; background-color: #707070 ; opacity: 0.0;",
-			        "width: 98%; background-color: #A8A8A8  ; font-style: italic; opacity:0.6;"));
+			        "width: 98%; background-color: #A8A8A8  ; font-style: italic; opacity:0.8;"));
 			
 			
 			Efecto3 = new Animator({duration: 700}).addSubject(
 			    new CSSStyleSubject(
 			        "cmdC",
 			        "border: 2px solid #808080; width: 15%;	height: auto; background-color: #707070 ; opacity: 0.0;",
-			        "width: 98%; background-color: #A8A8A8  ; font-style: italic; opacity:0.6;"));
+			        "width: 98%; background-color: #A8A8A8  ; font-style: italic; opacity:0.8;"));
 			
 			
 			Efecto4 = new Animator({duration: 700}).addSubject(
 			    new CSSStyleSubject(
 			        "cmdD",
 			        "border: 2px solid #808080; width: 15%;	height: auto; background-color: #707070 ; opacity: 0.0;",
-			        "width: 98%; background-color: #A8A8A8  ; font-style: italic; opacity:0.6;"));
+			        "width: 98%; background-color: #A8A8A8  ; font-style: italic; opacity:0.8;"));
 			
 			
 			Efecto5 = new Animator({duration: 1000}).addSubject(
@@ -67,7 +67,7 @@
 			Efecto1.toggle();
 			//Se ejecutan las animaciones de inicio de la aplicacion
 			
-			//$('#contentA').load('userConfig.html'); //Aqui se carga el contenido del archivo userConfig.html  dentro de una div
+			
 			
 		});		
 		
@@ -78,14 +78,14 @@
 				effectChangeOut = new Animator({duration: 400}).addSubject(
 				    new CSSStyleSubject(
 				        btnEntrante.toString(),
-				        "opacity: 0.6;",
+				        "opacity: 0.8;",
 				        "opacity:0.3;"));
 				        
 				effectChangeIn = new Animator({duration: 400}).addSubject(
 				    new CSSStyleSubject(
 				        this.OnViewCmd.toString(),
 				        "opacity: 0.3;",
-				        "opacity:0.6;"));
+				        "opacity:0.8;"));
 				        
 				divChangeIn = new Animator({duration: 600}).addSubject(
 				    new CSSStyleSubject(
@@ -154,16 +154,16 @@
 				<td class="columnButtons">
 					<div id="navigatorButtons" >
 						<div id="cmdA" onclick="changeContent('cmdA','contentA')" class="cmdA">							
-							A-MENU
+							<img src="resources/img/inicio.png" class="iconCmd"/>
 						</div>
 						<div id="cmdB" onclick="changeContent('cmdB','contentB')" class="cmdB">							
-							B-MENU
+							<img src="resources/img/alerta.png" class="iconCmd"/>
 						</div>
 						<div id="cmdC" onclick="changeContent('cmdC','contentC')" class="cmdC">							
-							C-MENU
+							<img src="resources/img/promociones.png" class="iconCmd"/>
 						</div>
 						<div id="cmdD" onclick="changeContent('cmdD','contentD')" class="cmdD">							
-							D-MENU
+							<img src="resources/img/config.png" class="iconCmd"/>
 						</div>						
 					</div>
 						
@@ -185,12 +185,12 @@
 						</div>	
 					</div>
 					<div id="contentD" class="ContentD">
+						<br />
+						<br />
+						<br />				
 						<div id="clockImg">
 							<img src="resources/img/reloj.png" />
-						</div>
-						  <div id="headerTitle" class="header">
-						  	<h2>Configuracíon de Preferencias.</h2>
-						  </div>
+						</div>					
 						  	<table width="100%">
 						  		<tr>
 						  			<td>
