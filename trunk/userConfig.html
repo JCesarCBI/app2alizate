@@ -2,15 +2,52 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-		
-		<link rel="stylesheet" href="resources/css/userConfig.css" />
 		<title>User´s Config 0.1</title>
+		
+		<script src="resources/javascript/mobi/js/mobiscroll-2.2.custom.min.js" type="text/javascript"></script>
+		
+    	
+    	<link href="resources/javascript/mobi/css/mobiscroll-2.2.custom.min.css" rel="stylesheet" type="text/css" />
+    	
+		<link rel="stylesheet" href="resources/css/userConfig.css" />
+		
+		
+		
+	
+		<script type="text/javascript">
+        	$(function(){
+			    $('#i').scroller({
+			        preset: 'time',
+			        theme: 'default',
+			        display: 'modal',
+			        mode: 'scroller'
+			    });    
+			
+			    $('#show').click(function(){
+			        $('#i').scroller('show'); 
+			        return false;
+			    });
+			    $('#clear').click(function () {
+			        $('#i').val('');
+			        return false;
+			    });
+			});
+    	</script>
 	</head>
 	
 	<body>
 		<div id="configContentFrm" class="configContent">
 			  <div id="headerTitle" class="header">
 			  	<h3>Configuracíon de Preferencias.</h3>
+			  </div>
+			  <div>
+			  	<input id="i" name="i"  />
+
+
+				<a href="#" id="show" class="btn">Show</a>
+				<a href="#" id="clear" class="btn">Clear</a>
+
+
 			  </div>
 			  
 		</div>
