@@ -4,26 +4,30 @@
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<title>Interface 1.0.12.5</title>
 		<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
-		<script src="resources/javascript/Jquery/jquery-1.8.3.js" type="text/javascript"></script>
+		<script src="resources/javascript/Jquery/jquery-1.8.3.js" type="text/javascript"></script>		
 		<script src="resources/javascript/GX/GX.js" type="text/javascript"></script>
 		<script src="resources/javascript/JsMorph/jsMorph-0.5.0.min.js" type="text/javascript"></script>
 		<script src="resources/javascript/berniecode-animator/animator.js" type="text/javascript"></script>
 		<script src="resources/javascript/berniecode-animator/animator.min.js" type="text/javascript"></script>
 		<script src="resources/javascript/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.js" type="text/javascript"></script>
-		
+		<script type="text/javascript" src="resources/javascript/orbit-1.2.3/jquery.orbit-1.2.3.min.js"></script>
 		<script src="resources/javascript/mobi/js/mobiscroll-2.2.custom.min.js" type="text/javascript"></script>
 		
     	
     	<link href="resources/javascript/mobi/css/mobiscroll-2.2.custom.min.css" rel="stylesheet" type="text/css" />
-    	<link rel="stylesheet" href="resources/javascript/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.css" />
-		<link rel="stylesheet" href="resources/css/userConfig.css" />
-		
 		<link rel="stylesheet" href="resources/css/style.css" />
+		<link rel="stylesheet" href="resources/javascript/orbit-1.2.3/orbit-1.2.3.css">
+	  	<link rel="stylesheet" href="resources/javascript/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.css" />
+		
 		
 		<script type="text/javascript">
 		
 		var OnViewCmd = "cmdA";
 		var OnViewDiv = "contentA";
+		
+		$(window).load(function() {
+				$('#featured').orbit();
+			});
 		
 		$(document).ready(function() {
 			Efecto1 = new Animator({duration: 520}).addSubject(
@@ -170,14 +174,15 @@
 				</td>
 				<td class="contentPropeties">
 					<div id="contentA" class="ContentA">
-						<div style="background-color:#A21412">
-							CONTENIDO AA
-						</div>	
+							<div>
+								<img src="resources/img/inicio-01.png" style="width: 95%; height: 35em;;"/>
+							</div>
 					</div>	
-					<div id="contentB" class="ContentB">
-						<div style="background-color:#F4C63F">
-							CONTENIDO BB	
-						</div>	
+					<div id="contentB" class="ContentB" style="padding-left: 3%; padding-top: 4%;">
+							<div id="featured"> 			
+								<img src="resources/img/promocion.png" />
+								<img src="resources/img/promocion2.png" />								
+							</div>
 					</div>	
 					<div id="contentC" class="ContentC">
 						<div style="background-color:#5F9CC5">
