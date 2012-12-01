@@ -11,16 +11,18 @@
 				
 			</div><!-- Header ends -->
 			<div id="body">
-				<input type="hidden" id="idClient" />
-				Nombre(s): <input type="text" id="firstName"/><br />
-				Apellido Paterno: <input type="text" id="lastName"/><br />
-				Apellido Materno: <input type="text" id="lastMaternal"/><br />
-				Correo Electrónico: <input type="email" id="email" /><br />
-				Codigo Postal: <input type="number" id="postCode"/><br />
-				Contraseña: <input type="password" id="password"/><br />
-				Confirmar contraseña: <input type="password" id="repeatPassword" /><br />
-				<button onclick="insertRecord()" >Crear cuenta</button><br />
-				<button onclick="resetForm()" >Borrar</button><br />
+				<form>
+					<input type="hidden" id="idClient" />
+					Nombre(s): <input type="text" id="firstName"/><br />
+					Apellido Paterno: <input type="text" id="lastName"/><br />
+					Apellido Materno: <input type="text" id="lastMaternal"/><br />
+					Correo Electrónico: <input type="email" id="email" /><br />
+					Codigo Postal: <input type="number" id="postCode" size="5"/><br />
+					Contraseña: <input type="password" id="password"/><br />
+					Confirmar contraseña: <input type="password" id="repeatPassword" /><br />
+					<button onclick="insertRecord()" >Crear cuenta</button><br />
+					<button onclick="resetForm()" >Borrar</button><br />
+				</form>
 				<div id="results">
 					
 				</div>
@@ -75,9 +77,16 @@
 			}
 			
 			function insertRecord() {
-				db.transaction(function(tx) {
-					tx.executeSql(insertStatement, [firstName.value, lastName.value, lastMaternal.value, email.value, postCode.value, password.value], loadAndReset, onError);
-				});
+				if (true) {} else{};
+				if (password.value != repeatPassword)
+				{
+					alert("Las contraseñas no coinciden");
+				}
+				else {
+					db.transaction(function(tx) {
+						tx.executeSql(insertStatement, [firstName.value, lastName.value, lastMaternal.value, email.value, postCode.value, password.value], loadAndReset, onError);
+					});
+				}
 			}
 			
 			function loadRecord(i){
