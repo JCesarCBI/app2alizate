@@ -1,0 +1,29 @@
+body{
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	color: #000;
+}
+
+.configContent{
+	-webkit-box-shadow:0 0px 4px #ccc, 0 0 20px #D0D0D0  inset;  
+	-moz-box-shadow:0 0px 4px #ccc, 0 0 20px #D0D0D0 inset; 
+	box-shadow:0 0px 4px #ccc, 0 0 20px #D0D0D0  inset;
+	border-radius: 20px; 
+	-webkit-border-radius: 20px; 
+	-moz-border-radius: 20px; 
+	-o-border-radius: 20px;
+	box-shadow: 3px 3px 4pc #535353;
+    -webkit-box-shadow: 3px 3px 4px #535353;
+    -moz-box-shadow: 3px 3px 4px #535353;
+    height: 100%;
+    background-color: #fff;
+    width: 100%;
+    z-index: 998;
+    float: left;
+}
+
+.header{
+text-align: center;
+width: 100%;
+margin-top: 2%;
+}
