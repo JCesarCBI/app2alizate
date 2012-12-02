@@ -124,7 +124,7 @@
 				this.OnViewDiv = divEntrante.toString();
 			}
 			
-		}
+		}		
 		
 		$(function(){
 			    $('#i').scroller({
@@ -158,7 +158,276 @@
 		        0,
 		        100));
 		        
+		function openForm(){
+			headerFX = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "headerReg",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			labelNameFX = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelName",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			inputNameFX = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputName",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			labelAP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelAppellidoP",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			
+			inputAP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputAppellidoP",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			labelAM = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelAppellidoM",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			inputAM = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputAppellidoM",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			labelMail = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelMail",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			inputMail = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputMail",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			labelCP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelCP",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			inputCP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputCP",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			
+			labelPwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelPass",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			
+			inputPwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputPass",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			labelRpwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelReplyPass",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			inputRpwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputReplyPass",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			submitBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "submitBtn",
+			        "opacity: 0.0;",
+			        "opacity:0.9;"));
+			        
+			openFormBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "registerBtn",
+			        "opacity: 1;z-index:500;",
+			        "opacity:0.0;z-index:-1;"));
+			
+			openLoginBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "loginBtn",
+			        "left: 40%;opacity: 1;z-index:500;",
+			        "left: 60%;opacity:0.0;z-index:-1;"));
+			        
+			openCancelBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "cancelRegBtn",
+			        "left: 40%;opacity: 0;z-index:-1;",
+			        "left: 60%;opacity:0.9;z-index:500;"));
+			        
+			headerFX.toggle();
+			labelNameFX.toggle();
+			inputNameFX.toggle();
+			labelAP.toggle();
+			inputAP.toggle();
+			labelAM.toggle();
+			inputAM.toggle();
+			labelMail.toggle();
+			inputMail.toggle();
+			labelCP.toggle();
+			inputCP.toggle();
+			labelPwd.toggle();
+			inputPwd.toggle();
+			labelRpwd.toggle();
+			inputRpwd.toggle();
+			submitBtn.toggle();
+			openFormBtn.toggle();
+			openLoginBtn.toggle();
+			openCancelBtn.toggle();
+		}
 		
+		
+		function closeForm(){
+			headerFX = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "headerReg",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			labelNameFX = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelName",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			inputNameFX = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputName",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			labelAP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelAppellidoP",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			
+			inputAP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputAppellidoP",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			labelAM = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelAppellidoM",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			inputAM = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputAppellidoM",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			labelMail = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelMail",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			inputMail = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputMail",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			labelCP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelCP",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			inputCP = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputCP",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			
+			labelPwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelPass",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			
+			inputPwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputPass",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			labelRpwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "labelReplyPass",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			inputRpwd = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "inputReplyPass",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			submitBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "submitBtn",
+			        "opacity: 0.9;",
+			        "opacity:0.0;"));
+			        
+			openFormBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "registerBtn",
+			        "opacity: 0.0;z-index:500;",
+			        "opacity:1;z-index:-1;"));
+			
+			openLoginBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "loginBtn",
+			        "left: 60%;opacity: 0.0;z-index:-1;",
+			        "left: 40%;opacity:1.0;z-index:500;"));
+			        
+			openCancelBtn = new Animator({duration: 700}).addSubject(
+			    new CSSStyleSubject(
+			        "cancelRegBtn",
+			        "left: 60%;opacity: 0.9;z-index:500;",
+			        "left: 40%;opacity:0.0;z-index:-1;"));
+			        
+			headerFX.toggle();
+			labelNameFX.toggle();
+			inputNameFX.toggle();
+			labelAP.toggle();
+			inputAP.toggle();
+			labelAM.toggle();
+			inputAM.toggle();
+			labelMail.toggle();
+			inputMail.toggle();
+			labelCP.toggle();
+			inputCP.toggle();
+			labelPwd.toggle();
+			inputPwd.toggle();
+			labelRpwd.toggle();
+			inputRpwd.toggle();
+			submitBtn.toggle();
+			openFormBtn.toggle();
+			openLoginBtn.toggle();
+			openCancelBtn.toggle();
+		}
 		
 		</script>
 	</head>
@@ -189,11 +458,15 @@
 							<div>
 								<img src="resources/img/inicio02.png" style="width: 100%; height: 36em; border-radius: 14px;"/>
 							</div>
-							<div id="registerBtn">
-								<a href="#" data-role="button" data-icon="plus">Registrarme</a>
+							<div id="registerBtn" >
+								<a href="#" onclick="openForm()" data-role="button" data-icon="plus">Registrarme</a>
 							</div>
 							<div id="loginBtn">
 								<a href="#" data-role="button" data-icon="check">Ingresar</a>
+							</div>
+							
+							<div id="cancelRegBtn">
+								<a href="#" onclick="closeForm()" data-role="button" data-icon="delete">Cancelar</a>
 							</div>
 							
 							<div id="headerReg">
@@ -212,7 +485,7 @@
 								<h3>Apellido P:</h3>
 							</div>
 							
-							<div id="inputApellidoP">
+							<div id="inputAppellidoP">
 								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
 							</div>
 							
@@ -220,7 +493,7 @@
 								<h3>Apellido M:</h3>
 							</div>
 							
-							<div id="inputApellidoM">
+							<div id="inputAppellidoM">
 								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
 							</div>
 							
