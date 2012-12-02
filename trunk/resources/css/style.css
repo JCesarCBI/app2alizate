@@ -146,6 +146,8 @@
     left: 16%;
     float: left;
     opacity: 0.0;
+    background-image: url('../img/ofertas.png');
+    background-repeat:no-repeat;
 }
 
 .ContentC{
@@ -169,6 +171,8 @@
     left: 16%;
     float: left;
     opacity: 0.0;
+    background-image: url('../img/ofertas-para-ti.png');
+    background-repeat:no-repeat;
 }
 
 .ContentD{
@@ -182,7 +186,6 @@
 	box-shadow: 3px 3px 4pc #535353;
     -webkit-box-shadow: 3px 3px 4px #535353;
     -moz-box-shadow: 3px 3px 4px #535353;
-    height: 36em;
     background-color: #f0f0f0;
     width: 81.2%;
     margin-left: 1.5%;
@@ -193,6 +196,8 @@
     float: left;
     opacity: 0.0;
     background-image: url('../img/config-01.png');
+    background-repeat:no-repeat;
+    min-height: 36em;
 }
 
 .timeClass{
@@ -200,13 +205,13 @@
 }
 
 .customBtn{
-	border: 1px solid maroon;
-   background-color: orange;
+	border: 1px solid #fff;
+   background-color: #32A6CA;
    border-radius: 10px;
-   box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;
-   -o-box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;
-   -webkit-box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;
-   -moz-box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;
+   box-shadow: inset 0 1px 3px #32A6CA, inset 0 -5px 15px maroon, 0 2px 1px #fff;
+   -o-box-shadow: inset 0 1px 3px #32A6CA, inset 0 -5px 15px maroon, 0 2px 1px #fff;
+   -webkit-box-shadow: inset 0 1px 3px #32A6CA, inset 0 -5px 15px maroon, 0 2px 1px #fff;
+   -moz-box-shadow: inset 0 1px 3px #32A6CA, inset 0 -5px 15px maroon, 0 2px 1px #fff;
    color: #000;
    text-shadow: 0 1px 1px black;
    padding: 5px 30px;
@@ -242,4 +247,55 @@
 	height: 8.6em;
 }
 
-.containing-element .ui-slider-switch { width: 20em }
+.socialSpace{
+	
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 25%;
+	left: 65%;
+}
+
+.socialSpaceAdvice{
+	
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 17%;
+	left: 65%;
+}
+
+.socialSpaceAdvice2{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 29.2%;
+	left: 65%;
+}
+
+.imgLikeSocial{
+	width: 100%;
+	height: auto;
+	
+}
+
+.shareit{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 45%;
+	left: 65%;
+}
+
+.socialSpaceAdvice3{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 49%;
+	left: 65%;
+}
