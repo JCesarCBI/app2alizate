@@ -154,7 +154,9 @@ div.slider-nav span {
     z-index: 1000;
     top: 50%;
     margin-top: -50px;
-    cursor: pointer; }
+    cursor: pointer; 
+    opacity: 0.5;
+   }
 
 div.slider-nav span.right {
     background: url(orbit/right-arrow.png);
