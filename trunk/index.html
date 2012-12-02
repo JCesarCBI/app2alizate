@@ -432,7 +432,7 @@
 		</script>
 	</head>
 	
-	<body>
+	<body onload="createCategory(); createDepartment();">
 		<div id="motherDiv" class="MotherDiv">
 			<table class="MotherTable">
 				<tr>
@@ -478,7 +478,7 @@
 							</div>
 							
 							<div id="inputName">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="text" name="inputNameFrm" id="firstName" value="" data-mini="true" />
 							</div>
 							
 							<div id="labelAppellidoP">
@@ -486,7 +486,7 @@
 							</div>
 							
 							<div id="inputAppellidoP">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="text" name="inputNameFrm" id="lastName" value="" data-mini="true" />
 							</div>
 							
 							<div id="labelAppellidoM">
@@ -494,7 +494,7 @@
 							</div>
 							
 							<div id="inputAppellidoM">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="text" name="inputNameFrm" id="lastMaternal" value="" data-mini="true" />
 							</div>
 							
 							<div id="labelMail">
@@ -502,7 +502,7 @@
 							</div>
 							
 							<div id="inputMail">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="text" name="inputNameFrm" id="email" value="" data-mini="true" />
 							</div>
 							
 							<div id="labelCP">
@@ -510,7 +510,7 @@
 							</div>
 							
 							<div id="inputCP">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="text" name="inputNameFrm" id="postCode" value="" data-mini="true" />
 							</div>
 							
 							<div id="labelPass">
@@ -518,7 +518,7 @@
 							</div>
 							
 							<div id="inputPass">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="password" name="inputNameFrm" id="password" value="" data-mini="true" />
 							</div>
 							
 							<div id="labelReplyPass">
@@ -526,11 +526,11 @@
 							</div>
 							
 							<div id="inputReplyPass">
-								<input type="text" name="inputNameFrm" id="inputNameFrm" value="" data-mini="true" />
+								<input type="password" name="inputNameFrm" id="repeatPassword" value="" data-mini="true" />
 							</div>
 							
 							<div id="submitBtn">
-								<a href="#" data-role="button" data-icon="refresh">Registrar</a>
+								<a href="inicio.html" data-role="button" onclick="insertRecord()" data-icon="refresh">Registrar</a>
 							</div>
 							
 					</div>	
@@ -676,6 +676,9 @@
 															</select> <br />
 														</div>
 													</div>
+													<div id="results" style="display: none;">
+														
+													</div>
 													
 													<div data-role="collapsible">
 														<h1 style="width: 94%;"><img src="resources/img/carne.png" style="width: 30%; height: auto;" /></h1>
@@ -736,4 +739,248 @@
 			</table>
 		</div> <!-- Termina div container -->
 	</body>
+	<script>
+		var results = document.getElementById('results');
+		var idClient = document.getElementById('idClient');
+		var firstName = document.getElementById('firstName');
+		var lastName = document.getElementById('lastName');
+		var lastMaternal = document.getElementById('lastMaternal');
+		var email = document.getElementById('email');
+		var postCode = document.getElementById('postCode');
+		var password = document.getElementById('password');
+		var repeatPassword = document.getElementById('repeatPassword');
+		
+		var createStatement = "CREATE TABLE IF NOT EXISTS Client (idClient INTEGER PRIMARY KEY AUTOINCREMENT, firstName text, lastName text, lastMaternal text, email text, postCode integer, password text)";
+		var selectAllStatement = "SELECT * FROM Client";
+		var insertStatement = "INSERT INTO Client (firstName, lastName, lastMaternal, email, postCode, password) VALUES (?,?,?,?,?,?)";
+		
+		var db = openDatabase("ComercialMexicana", "1.0", "Comercial Mexicana", 200000);
+		
+		var dataset;
+		createTable();
+		
+			function onError(tx, error){
+				alert(error.message);
+			}
+			
+			function showRecords(){
+				results.innerHTML = '';
+				db.transaction(function(tx){
+					tx.executeSql(selectAllStatement, [], function(tx, result) {
+						dataset = result.rows;
+						for (var i = 0, item = null; i < dataset.length; i++) {
+							item = dataset.item(i);
+							results.innerHTML +=
+								'<li>' + item['lastName'] + ', ' + item['firstName'] + ', ' + item['password'] + '</li>';
+						}
+					});
+				});
+			}
+			
+			function createTable(){
+				 db.transaction(function(tx) {
+				 	tx.executeSql(createStatement, [], showRecords, onError);
+				 });
+			}
+			
+			function insertRecord() {
+				db.transaction(function(tx) {
+					tx.executeSql(insertStatement, [firstName.value, lastName.value, lastMaternal.value, email.value, postCode.value, password.value], loadAndReset, onError);
+				});
+			}
+			
+			function loadRecord(i){
+				var item = dataset.item(i);
+				firstName.value = item['firstName'];
+				lastName.value = item['lastName'];
+				lastMaternal.value = item['lastMaternal'];
+				email.value = item['email'];
+				postCode.value = item['postCode'];
+				password.value = item['password'];
+				idClient.value = item['idClient'];
+			}
+			
+			function loadAndReset(){
+				resetForm();
+				showRecords();
+			}
+			
+			function resetForm(){
+				firstName.value = '';
+				lastName.value = '';
+				lastMaternal.value = '';
+				email.value = '';
+				postCode.value = '';
+				password.value = '';
+				idClient.value = '';
+				repeatPassword.value = '';
+			}
+			
+			function createDepartment(){				
+				db.transaction(function(tx) {
+				 	tx.executeSql("CREATE TABLE Department (idDepartment INTEGER PRIMARY KEY AUTOINCREMENT, nameDepartment TEXT)");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Farmacia')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Frutas y verduras')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Lácteos y congelados')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Quesos')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Carne, pescado y salchichoneria')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Panadería y tortillería')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Gourmet')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Vegetales en conserva')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Botanas')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Dulces')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Abarrotes comestibles')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Bebidas')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Desechables')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Limpieza')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Higiene personal')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Vinos, licores y cigarros')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Mascotas')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Bebés')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Ferretería y jarcería')");
+				 	tx.executeSql("INSERT INTO Department (nameDepartment) VALUES ('Alimentos preparados')");
+				 });
+			}
+			function createCategory(){				
+				db.transaction(function(tx) {
+					tx.executeSql("CREATE TABLE Category (idCategory INTEGER PRIMARY KEY AUTOINCREMENT, nameCategory TEXT, departmentId INTEGER, FOREIGN KEY(departmentId) REFERENCES department(idDepartment))");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Platillos',20)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Rostizados',20)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pintxos',20)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pilas',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Focos',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Electricidad',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cintas y Pegamento',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Escobas y cepillos',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Trapeadores y mops',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Telas para limpieza',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Fibras, esponjas y guantes de limpieza',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Planchado',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Accesorios de jarciería',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Carbon y velas',19)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Higiene y perfumería',18)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Accesorios',18)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pañales',18)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Alimento infantil',18)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Limpieza y accesorios',17)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Alimento para mascotas',17)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Tabacos',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Vinos y licores',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cervezas',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Coolers, cocteles y rompopes',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Brandy',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cognac',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Whisky',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Ron',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Tequila',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Aguardientes y Mezcal',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Vodka y ginebra',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cremas, jerez y vinos generosos',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Orgánicos',16)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Jabón de tocador',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Incontinencia',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Tinte y tratamiento capilar',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cuidado del cuerpo',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Afeitado',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Protección femenina',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cuidado e higiene oral',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Shampoo, acondicionadores y tratamientos',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Fijadores y modeladores',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Desodorantes y talcos',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cremas y cuidado facial',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Orgánicos',15)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Limpiadores',14)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Lavatrastes',14)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Jabón, blanqueadores y comp. lavandería',14)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Detergente y suavizantes',14)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Aromatizantes',14)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Insecticidas y plaguicidas',14)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Servilletas y servitoallas',13)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Bolsas para basura',13)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Protección de alimentos',13)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Platos, vasos y cubiertos desechables',13)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Papel higiénico y facial',13)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Refrescos',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cocteles sin alcohol',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Bebidas de sabor',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Deportivas y energéticas',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Saborizantes y concentrados',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Jugos y néctares',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Aguas',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Bebidas de soya',12)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Gelatinas, postres y frutas en almíbar',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Miel, cajeta, mermelada',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Azúcar y endulzantes',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Te,Cafes y sustitutos de crema',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Chocolate y saborizantes',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Leche y leche en polvo',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cereal',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Galletas y barras',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pan de caja, tostadas y tortillas',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Harina, arroz y frijol',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Sopas y pastas',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Aceites comestibles, oliva y vinagre',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Mayonesa, mostaza y aderezos',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Sal, semillas, especias y sazonadores',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Salsas, chiles y moles',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Atunes y mariscos',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Consomes, pure y caldillos',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Alimentos enlatados',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Productos para diabéticos',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Abarrotes orgánicos',11)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Dulces típicos y a granel',10)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Fruta seca',10)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Dulces y chocolates',10)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Panadería',6)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Tortillería',6)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pasteles y repostería',6)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pescado y mariscos',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Carne (Res)',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cerdo',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Pollo',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Carne, cerdo y aves orgánico',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Carnes frías y embutidos',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Preparados a granel',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Organicos',5)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Quesos nacionales',4)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Quesos importados',4)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Yoghurt sólido',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Yoghurt líquido',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Mantequilla y margarina',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cremas',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Huevo',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Bebidas lácteas',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Postres, nieves y helados',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Frutas y verduras congeladas',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Alimentos congelados',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Hielo',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Lácteos orgánicos',3)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Frutas',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Verduras',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Hojas, tallos, manojos, hongos y hierbas',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Empacados y preparados',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Frutas cítricas',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Secos y semillas a granel',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Frutas y verduras orgánicas',2)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Aparato digestivo',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Sistema respiratorio',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Vitamínicos y complementos',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Oftálmicos',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Alimento para bebé',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Material para curación',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Analgésicos y sueros',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Planeación familiar e higiene íntima',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Higiene bucal',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Dermatológicos',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Accesorios para pies y calzado',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Sistema nervioso',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Cardiovascular',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Hormonales',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Antimicrobianos y sistema inmunologico',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Sistema urologicos',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('Especialidad',1)");
+				 	tx.executeSql("INSERT INTO Category (nameCategory, departmentId) VALUES ('FARMACOM',1)");
+				 });
+			}
+	</script>
 </html>
