@@ -387,6 +387,16 @@
 	left: 2%;
 }
 
+#cancelRegBtn{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 6em;
+	left: 60%;
+	opacity: 0.0;
+}
+
 #loginBtn{
 	width: 15em;
 	height: 3.5em;
@@ -436,7 +446,7 @@
 	opacity: 0.0;
 }
 
-#inputApellidoP{
+#inputAppellidoP{
 	width: 17em;
 	height: 3.5em;
 	position: absolute;
@@ -457,7 +467,7 @@
 	opacity: 0.0;
 }
 
-#inputApellidoM{
+#inputAppellidoM{
 	width: 17em;
 	height: 3.5em;
 	position: absolute;
