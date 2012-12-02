@@ -127,12 +127,18 @@
 			        display: 'modal',
 			        animate: 'pop',
 			        mode: 'scroller'
-			    });    
+			    });   			 
 			
 			    $('#show').click(function(){
 			        $('#i').scroller('show'); 
 			        return false;
 			    });
+			    
+			    $('#clockImgView').click(function(){
+			        $('#i').scroller('show'); 
+			        return false;
+			    });
+			    
 			    $('#clear').click(function () {
 			        $('#i').val('');
 			        return false;
@@ -179,11 +185,26 @@
 							</div>
 					</div>	
 					<div id="contentB" class="ContentB" style="padding-left: 3%; padding-top: 4%;">
-							<div id="featured"> 			
+							<div id="featured" style="border: 1px solid #000"> 			
 								<img src="resources/img/promocion.png" />
 								<img src="resources/img/promocion2.png" />
 								<img src="resources/img/promocion3.png" />	
 								<img src="resources/img/promocion4.png" />						
+							</div>
+							
+							<div id="socialNetsAdviseLike" class="socialSpaceAdvice">
+								<h4>Toca en</h4>
+								
+							</div>
+							
+							<div id="socialNetsAdviseLike2" class="socialSpaceAdvice2">
+								<h4>y deja que tus amigos vean las ofertas que te interesan.</h4>
+								
+							</div>
+							
+							<div id="socialNetsLike" class="socialSpace">
+								<img src="resources/img/megusta.png" class="imgLikeSocial"/>
+								
 							</div>
 					</div>	
 					<div id="contentC" class="ContentC">
@@ -194,7 +215,7 @@
 						<br />
 						<br />				
 						<div id="clockImg">
-							<img src="resources/img/reloj.png" />
+							<img id="clockImgView" src="resources/img/reloj.png" />
 						</div>			
 							<table width="100%" border="0">
 							<tr>
@@ -215,7 +236,7 @@
 											<td width="50%" align="left">
 												<a href="#" id="clear" class="btn">
 										  <div class="customBtn" style="position: absolute; top: 264px; margin-top: 10 em;">
-											Limpiar
+											Borrar
 										  </div>
 										</a>
 											</td>
