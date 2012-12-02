@@ -299,75 +299,6 @@
 	left: 65%;
 }
 
-
-/*Seccion C*/
-	.socialSpaceAdviceSectionC{
-	
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 22%;
-	left: 65%;
-}
-
-
-.socialSpaceSectionC{
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 30.2%;
-	left: 65%;
-}
-
-.socialSpaceAdvice2SectionC{
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 34.2%;
-	left: 65%;
-}
-
-
-.shareitSectionC{
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 50%;
-	left: 65%;
-}
-
-.socialSpaceAdvice3SectionC{
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 54%;
-	left: 65%;
-}
-
-.shareit2SectionC{
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 66%;
-	left: 65%;
-}
-
-.socialSpaceAdvice4SectionC{
-	width: 15em;
-	height: 3.5em;
-	position: absolute;
-	float:left;
-	top: 70%;
-	left: 65%;
-}
-
-/*seccion D*/
 .socialSpaceAdvice4{
 	width: 21em;
 	height: 3.5em;
@@ -376,3 +307,94 @@
 	top: 48%;
 	left: 0%;
 }
+
+
+#registerBtn{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 6em;
+	left: 2%;
+}
+
+#loginBtn{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 6em;
+	left: 40%;
+}
+
+#headerReg{
+	width: 24em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 3em;
+	left: 3%;
+	opacity: 0.5;
+}
+
+#labelName{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 10em;
+	left: 3%;
+	opacity: 0.5;
+}
+
+#inputName{
+	width: 17em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 10.7em;
+	left: 14%;
+	opacity: 0.5;
+}
+
+#labelAppellidos{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 14em;
+	left: 3%;
+	opacity: 0.5;
+}
+
+#inputApellidos{
+	width: 17em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 14.7em;
+	left: 14%;
+	opacity: 0.5;
+}
+
+
+#labelCP{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 18em;
+	left: 3%;
+	opacity: 0.5;
+}
+
+#inputCP{
+	width: 17em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 18.7em;
+	left: 14%;
+	opacity: 0.5;
+}
+
