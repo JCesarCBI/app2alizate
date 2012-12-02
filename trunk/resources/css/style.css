@@ -334,7 +334,7 @@
 	float:left;
 	top: 3em;
 	left: 3%;
-	opacity: 0.5;
+	opacity: 0.0;
 }
 
 #labelName{
@@ -344,7 +344,7 @@
 	float:left;
 	top: 10em;
 	left: 3%;
-	opacity: 0.5;
+	opacity: 0.0;
 }
 
 #inputName{
@@ -354,38 +354,78 @@
 	float:left;
 	top: 10.7em;
 	left: 14%;
-	opacity: 0.5;
+	opacity: 0.0;
 }
 
-#labelAppellidos{
+#labelAppellidoP{
 	width: 15em;
 	height: 3.5em;
 	position: absolute;
 	float:left;
-	top: 14em;
+	top: 13em;
 	left: 3%;
-	opacity: 0.5;
+	opacity: 0.0;
 }
 
-#inputApellidos{
+#inputApellidoP{
 	width: 17em;
 	height: 3.5em;
 	position: absolute;
 	float:left;
-	top: 14.7em;
+	top: 13.7em;
 	left: 14%;
-	opacity: 0.5;
+	opacity: 0.0;
 }
 
+
+#labelAppellidoM{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 16em;
+	left: 3%;
+	opacity: 0.0;
+}
+
+#inputApellidoM{
+	width: 17em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 16.7em;
+	left: 14%;
+	opacity: 0.0;
+}
+
+#labelMail{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 19em;
+	left: 3%;
+	opacity: 0.0;
+}
+
+#inputMail{
+	width: 17em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 19.7em;
+	left: 14%;
+	opacity: 0.0;
+}
 
 #labelCP{
 	width: 15em;
 	height: 3.5em;
 	position: absolute;
 	float:left;
-	top: 18em;
+	top: 22em;
 	left: 3%;
-	opacity: 0.5;
+	opacity: 0.0;
 }
 
 #inputCP{
@@ -393,8 +433,58 @@
 	height: 3.5em;
 	position: absolute;
 	float:left;
-	top: 18.7em;
+	top: 22.7em;
 	left: 14%;
-	opacity: 0.5;
+	opacity: 0.0;
+}
+
+#labelPass{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 25em;
+	left: 3%;
+	opacity: 0.0;
+}
+
+#inputPass{
+	width: 12em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 25.7em;
+	left: 23.5%;
+	opacity: 0.0;
+}
+
+#labelReplyPass{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 28em;
+	left: 3%;
+	opacity: 0.0;
+}
+
+#inputReplyPass{
+	width: 12em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 28.7em;
+	left: 23.5%;
+	opacity: 0.0;
+}
+
+#submitBtn{
+	width: 18em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 32em;
+	left: 3%;
+	opacity: 0.0;
 }
 
