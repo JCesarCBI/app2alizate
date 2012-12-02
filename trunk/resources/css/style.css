@@ -299,6 +299,75 @@
 	left: 65%;
 }
 
+
+/*Seccion C*/
+	.socialSpaceAdviceSectionC{
+	
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 22%;
+	left: 65%;
+}
+
+
+.socialSpaceSectionC{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 30.2%;
+	left: 65%;
+}
+
+.socialSpaceAdvice2SectionC{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 34.2%;
+	left: 65%;
+}
+
+
+.shareitSectionC{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 50%;
+	left: 65%;
+}
+
+.socialSpaceAdvice3SectionC{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 54%;
+	left: 65%;
+}
+
+.shareit2SectionC{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 66%;
+	left: 65%;
+}
+
+.socialSpaceAdvice4SectionC{
+	width: 15em;
+	height: 3.5em;
+	position: absolute;
+	float:left;
+	top: 70%;
+	left: 65%;
+}
+
+/*seccion D*/
 .socialSpaceAdvice4{
 	width: 21em;
 	height: 3.5em;
