@@ -241,3 +241,5 @@
 	width: 100%;
 	height: 8.6em;
 }
+
+.containing-element .ui-slider-switch { width: 20em }
