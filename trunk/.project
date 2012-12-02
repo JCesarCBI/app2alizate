@@ -1,22 +1,3 @@
-<<<<<<< .mine
-<?xml version="1.0" encoding="UTF-8"?>
-<projectDescription>
-	<name>ComercialDemo</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-		<buildCommand>
-			<name>com.aptana.ide.core.unifiedBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-	</buildSpec>
-	<natures>
-		<nature>com.aptana.projects.webnature</nature>
-	</natures>
-</projectDescription>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>trunk</name>
@@ -26,6 +7,6 @@
 	<buildSpec>
 	</buildSpec>
 	<natures>
+		<nature>com.aptana.projects.webnature</nature>
 	</natures>
 </projectDescription>
->>>>>>> .r30
